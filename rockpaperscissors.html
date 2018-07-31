@@ -1,0 +1,106 @@
+<html>
+<script>
+
+
+var playerChoice = playerSelection();
+
+ function playerSelection() {
+  var x = prompt("Please select either Rock, Paper, or Scissors.");
+  var y = x.toLowerCase();
+  playerChoice = y;
+  return y;
+};
+
+
+var computerSelection;
+
+function computerPlay() {
+var x = Math.floor(Math.random() * 10);
+if (x <= 3) {
+computerSelection = "rock";
+return "rock";
+  }
+if (x > 3 && x < 6) {
+  computerSelection = "paper";
+  return "paper";
+} else {
+  computerSelection = "scissors";
+  return "scissors";
+}
+}
+
+
+
+
+
+let playerScore = 0;
+let computerScore = 0;
+
+function playRound(computerSelection, playerChoice) {
+  if (playerChoice === "rock") {
+    if (computerSelection === "paper") {
+      computerScore++;
+      return "You lose! Paper beats rock. ";
+    }  else if (computerSelection === "scissors") {
+      playerScore++ ;
+      return "You win! Rock beats scissors.";
+    }
+    }
+  if (playerChoice === computerSelection) {
+    return "It's a tie!";
+  }
+  if (playerChoice === "scissors") {
+    if (computerSelection === "rock") {
+      computerScore++;
+      return "You lose. Rock beats scissors";
+    } else if (computerSelection === "paper") {
+      playerScore++;
+      return "You win. Scissors beats paper.";
+    }
+    }
+  if (playerChoice === "paper") {
+    if(computerSelection === "rock") {
+      playerScore++;
+      return "You win. Paper beats rock.";
+    } else if (computerSelection === "scissors") {
+      computerScore++;
+      return "You lose. Scissors beats paper.";
+    }
+  }
+}
+
+var round;
+
+function game(round) {
+
+
+for(round = 0; round < 5; round++) {
+
+  computerPlay();
+
+  playerSelection();
+
+computerSelection = computerPlay();
+
+playRound(computerSelection, playerChoice);
+
+
+  }
+}
+
+  function whowins() {
+  if (playerScore > computerScore) {
+    alert("You win!");
+  } else if (computerScore > playerScore) {
+    alert("You lose!");
+  } else if (playerScore === computerScore) {
+    alert("It's a tie.");
+  }
+  }
+
+
+</script>
+
+
+</html>
+# rockpaperscissors
